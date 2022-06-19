@@ -20,7 +20,11 @@ namespace CS_project.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("CS_project_authContextConnection")));
 
-                services.AddDefaultIdentity<CS_projectUserApplication>(options => options.SignIn.RequireConfirmedAccount = true)
+                services.AddDefaultIdentity<CS_projectUserApplication>(options => {
+                    options.SignIn.RequireConfirmedAccount = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireUppercase = false;
+                    })
                     .AddEntityFrameworkStores<CS_project_authContext>();
             });
         }

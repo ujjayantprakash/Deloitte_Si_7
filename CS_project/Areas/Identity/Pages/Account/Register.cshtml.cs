@@ -47,6 +47,16 @@ namespace CS_project.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "First Name")]
+            public string firstName { get; set; }
+
+            [Required]
+            [DataType(DataType.Text)]
+            [Display(Name = "Last Name")]
+            public string lastName { get; set; }
+            [Required]
+
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
@@ -65,6 +75,10 @@ namespace CS_project.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                Response.Redirect("/");
+            }
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
@@ -75,7 +89,7 @@ namespace CS_project.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new CS_projectUserApplication { UserName = Input.Email, Email = Input.Email };
+                var user = new CS_projectUserApplication { UserName = Input.Email, Email = Input.Email,firstName=Input.firstName,lastName=Input.lastName };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
