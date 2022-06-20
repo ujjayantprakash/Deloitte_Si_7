@@ -19,9 +19,10 @@ a {
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
+  color:#fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+  height:100%;
 }
 
 /* Sticky footer styles
@@ -64,6 +65,7 @@ body {
   font-family:"Poppins",sans-serif;
 }
 .footer {
+  float:left;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -97,4 +99,17 @@ div.card-content{
 /*login form*/
 div.login-form-icon{
     text-align:center;
+}
+
+.logo {
+    background-size: contain;
+    background-position: left;
+    width: 20%;
+    height: 100%;
+    clear: both;
+}
+
+.logo img {
+     margin-left: 25%;
+    margin-right: 25%;
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CS_project</title>
+    <title>@ViewData["Title"] - Deloitte7</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,12 +15,14 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CS_project</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 @*<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">*@
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <partial name="_Loginpartial.cshtml" />
-                    </div>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_Loginpartial.cshtml" />
                 </div>
+                <img style="width:10%;height:20%;display:block;margin-left:100px;margin-right:auto" src="~/css/assets/Deloitte_logo_black.png"
+                     class="collapse d-sm-inline-flex flex-sm-row-reverse">
+            </div>
         </nav>
     </header>
     <div class="container">
@@ -31,7 +33,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - CS_project - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy;Copyright &commat;Deloitte.com | 2021 <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
