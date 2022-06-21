@@ -4,6 +4,8 @@
 @{
 }
 
+<script src="~/js/site.js"></script>
+
 @model List<string>
 <h3>All Uploaded files click to download</h3>
 <div class="container">
@@ -25,6 +27,11 @@
                         </a>
                     </div>
                 </div>-->
+                @*<div class="alert alert-success" id="success-alert">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        <strong>Success!</strong>
+                        File was uploaded
+                    </div>*@
                 <li>
                     <a href="/Test/DownloadFile/?filePath=@fPath">
                         @fPath
@@ -44,6 +51,12 @@
             <div class="form-group col-md-6">
                 <input type="submit" name="fileSubmit" value="Upload" />
             </div>
+            <div class="alert alert-success alert-dismissable" id="success-alert">
+                <button type="submit" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong>Success!</strong>
+                File upload complete.
+            </div>
+
         </div>
     }
 </div>

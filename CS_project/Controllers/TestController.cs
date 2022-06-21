@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CS_project.Models;
-
+using System.Security.Claims;
 
 namespace CS_project.Controllers
 {
@@ -16,23 +16,32 @@ namespace CS_project.Controllers
     public class TestController : Controller
     {
         private readonly string wwwrootDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+        public string str;
         public IActionResult Index()
         {
             List<string> content = Directory.GetFiles(wwwrootDirectory, "*.txt").Select(Path.GetFileName).ToList();
 
             return View(content);
         }
+        [HttpGet]
+        public ActionResult<IEnumerable<string>> Get()
+        {
+            var UserName = HttpContext.User.Identity.Name;
+            str = UserName;
+            return Ok(UserName);
+        }
         [HttpPost]
         public async Task<IActionResult> Index(IFormFile myFile)
         {
-            if(myFile != null)
+            var userName = User.FindFirstValue(ClaimTypes.Name);
+            if (myFile != null)
             {
                 //preparing the path
                 //var user = User.Identity.GetUserId();
                 //System.Security.Claims.ClaimsPrincipal currentUser = this.User;
                 //bool isAdmin = currentUser.IsInRole("Admin");
                 //var id = _userManager.GetUserId(User);
-                var path = Path.Combine(wwwrootDirectory, DateTime.Now.ToString("dd - MM - yyyy")+"__"+myFile.FileName+"__"+ Path.GetExtension(myFile.FileName));
+                var path = Path.Combine(wwwrootDirectory, DateTime.Now.ToString("dd - MM - yyyy")+"__"+myFile.FileName+"__"+userName+Path.GetExtension(myFile.FileName));
 
                 //saving the file
                 using (var stream = new FileStream(path, FileMode.Create))
