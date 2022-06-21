@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using CS_project.Models;
+
 
 namespace CS_project.Controllers
 {
@@ -15,7 +18,7 @@ namespace CS_project.Controllers
         private readonly string wwwrootDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
         public IActionResult Index()
         {
-            List<string> content = Directory.GetFiles(wwwrootDirectory, "*.jpg").Select(Path.GetFileName).ToList();
+            List<string> content = Directory.GetFiles(wwwrootDirectory, "*.txt").Select(Path.GetFileName).ToList();
 
             return View(content);
         }
@@ -25,7 +28,11 @@ namespace CS_project.Controllers
             if(myFile != null)
             {
                 //preparing the path
-                var path = Path.Combine(wwwrootDirectory, DateTime.Now.Ticks.ToString() + Path.GetExtension(myFile.FileName));
+                //var user = User.Identity.GetUserId();
+                //System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+                //bool isAdmin = currentUser.IsInRole("Admin");
+                //var id = _userManager.GetUserId(User);
+                var path = Path.Combine(wwwrootDirectory, DateTime.Now.ToString("dd - MM - yyyy")+"__"+myFile.FileName+"__"+ Path.GetExtension(myFile.FileName));
 
                 //saving the file
                 using (var stream = new FileStream(path, FileMode.Create))
@@ -53,7 +60,7 @@ namespace CS_project.Controllers
             var contentType = "APPLICATION/octet-stream";
             var fileName = Path.GetFileName(path);
 
-            return File(memory, contentType, fileName);
+            return File(memory,contentType,fileName);
 
         }
 

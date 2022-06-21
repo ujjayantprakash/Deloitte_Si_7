@@ -5,18 +5,35 @@
 }
 
 @model List<string>
+<h3>All Uploaded files click to download</h3>
 <div class="container">
     <div class="row">
-        @foreach (var fPath in Model)
-        {
-            <div class="col-md-3">
-                <div class="alert alert-success" role="alert">
+        <ul>
+            @foreach (var fPath in Model)
+            {
+                //var str = fPath + "\\n";
+
+                <!--<div class="col-md-3">-->
+                @*<div style="background-color:#4c5f55" class="alert alert-success" role="alert">*@
+                <!--<div style="background-color:#4c5f55">
+                <a href="/Test/DownloadFile/?filePath=@fPath">-->
+                @*<img src="~/@fPath" alt="error" height="250px" width="205px" />*@
+                <!--<ul>
+                                <li> @fPath </li>
+                            </ul>
+
+                        </a>
+                    </div>
+                </div>-->
+                <li>
                     <a href="/Test/DownloadFile/?filePath=@fPath">
-                        <img src="~/@fPath" alt="error" height="250px" width="205px" />
+                        @fPath
                     </a>
-                </div>
-            </div>
-        }
+                </li>
+                @*@Html.Raw("\n")*@
+
+            }
+        </ul>
     </div>
     @using (Html.BeginForm("Index", "Test", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
