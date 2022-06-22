@@ -104,7 +104,8 @@ div.login-logout-tab a.nav-link {
 
 div.card-content {
     padding: 10px 20px;
-    background-color:#b4ced1;
+    /*background-color:#b4ced1;*/
+    background-color:gray;
 }
 
 /*login form*/
