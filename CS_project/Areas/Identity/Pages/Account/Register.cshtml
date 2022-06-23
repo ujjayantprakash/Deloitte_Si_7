@@ -5,6 +5,11 @@
     Layout = "~/Areas/Identity/Pages/_authLayout.cshtml";
 }
 
+<style>
+    #mybutton:hover{
+        background-color:dimgray;
+    }
+</style>
 
 <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
 
@@ -12,35 +17,35 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="Input.firstName"></label>
+                <label style="color:white" asp-for="Input.firstName"></label>
                 <input asp-for="Input.firstName" class="form-control" />
                 <span asp-validation-for="Input.firstName" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="Input.lastName"></label>
+                <label style="color:white" asp-for="Input.lastName"></label>
                 <input asp-for="Input.lastName" class="form-control" />
                 <span asp-validation-for="Input.lastName" class="text-danger"></span>
             </div>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="Input.Email"></label>
+        <label style="color:white" asp-for="Input.Email"></label>
         <input asp-for="Input.Email" class="form-control" />
         <span asp-validation-for="Input.Email" class="text-danger"></span>
     </div>
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="Input.Password"></label>
+                <label style="color:white" asp-for="Input.Password"></label>
                 <input asp-for="Input.Password" class="form-control" />
                 <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="Input.ConfirmPassword"></label>
+                <label style="color:white" asp-for="Input.ConfirmPassword"></label>
                 <input asp-for="Input.ConfirmPassword" class="form-control" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
@@ -48,7 +53,7 @@
     </div>
 
 
-    <button type="submit" class="btn btn-outline-primary">Register</button>
+    <button style="color:white" type="submit" class="btn btn-dark" id="mybutton">Register</button>
 </form>
 
 @section Scripts {

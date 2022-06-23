@@ -72,7 +72,8 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
     font-family: "Poppins",sans-serif;
-    background-color:#7ba1a0;
+   /* background-color: #7ba1a0;*/
+    background: #000 center url("/wwwroot/css/assets/deloitte-crypto-new-1024x576.png") no-repeat;
 }
 .footer {
   float:left;
