@@ -24,8 +24,13 @@
 //    });
 //});
 
-var pressedButton = document.getElementById('label-upload');
-pressedButton.addEventListener("click", function (event) {
-    alert("File uploaded successfully");
-})
+//const text1 = document.getElementById('file-name').textContent;
+//console.log(text1);
+
+//var pressedButton = document.getElementById('label-upload');
+//if (pressedButton) {
+//    pressedButton.addEventListener("click", function (event) {
+//        alert("File uploaded successfully");
+//    })
+//}
 

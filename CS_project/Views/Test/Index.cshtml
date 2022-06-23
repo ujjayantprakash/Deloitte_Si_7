@@ -95,6 +95,8 @@
 </style>
 <script src="~/js/site.js"></script>
 
+<h3>@ViewData["error"]</h3>
+
 @model List<string>
 @*<h3>All Uploaded files click to download</h3>*@
 <div style="color:white"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List Of Processed Files And Document Metadata </b><br /></div>
@@ -191,8 +193,36 @@
 <script>
     let inputFile = document.getElementById("file-input");
     let fileNameFileId = document.getElementById("file-name");
+    let flag;
+    let ext;
     inputFile.addEventListener('change', function (event) {
         let uploadedFileName = event.target.files[0].name;
         fileNameFileId.textContent = uploadedFileName;
+        console.log(uploadedFileName);
+        let result = uploadedFileName.lastIndexOf(".");
+        let res = uploadedFileName.substring(result + 1);
+        console.log(res);
+        ext = res;
+        if (res == "txt") {
+            flag = true;
+        }
+        else {
+            flag = false;
+        }
+        var pressedButton = document.getElementById('label-upload');
+        console.log(flag);
+        if (flag == true) {
+            console.log("inside");
+            pressedButton.addEventListener("click", function (event) {
+                alert("File uploaded successfully");
+            })
+        }
+        else {
+            console.log("outside");
+            pressedButton.addEventListener("click", function (event) {
+                alert("Error You uploaded " + ext + " file please upload txt files only");
+            })
+        }
     })
+   
 </script>

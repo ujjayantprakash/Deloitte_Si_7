@@ -41,17 +41,29 @@ namespace CS_project.Controllers
                 //System.Security.Claims.ClaimsPrincipal currentUser = this.User;
                 //bool isAdmin = currentUser.IsInRole("Admin");
                 //var id = _userManager.GetUserId(User);
-                var path = Path.Combine(wwwrootDirectory, DateTime.Now.ToString("dd - MM - yyyy")+"__"+myFile.FileName+"__"+userName+Path.GetExtension(myFile.FileName));
-
-                //saving the file
-                using (var stream = new FileStream(path, FileMode.Create))
+                var ext = Path.GetExtension(myFile.FileName);
+                if (ext.Equals(".txt"))
                 {
-                    await myFile.CopyToAsync(stream);
-                }
+                    var path = Path.Combine(wwwrootDirectory, DateTime.Now.ToString("dd - MM - yyyy") + "__" + myFile.FileName + "__" + userName + Path.GetExtension(myFile.FileName));
 
+                    //saving the file
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await myFile.CopyToAsync(stream);
+                    }
+
+                    //return RedirectToAction("Index");
+                }
+                //else
+                //{
+                //    TempData["Message"] = "This is my Error";
+                //}
                 return RedirectToAction("Index");
             }
-            return View();
+
+            ViewData["error"] = "this is my error";
+            return RedirectToAction("Index");
+            //return View();
         }
 
         public async Task<IActionResult> DownloadFile(string filePath)
