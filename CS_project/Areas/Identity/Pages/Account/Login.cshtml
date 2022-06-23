@@ -24,6 +24,10 @@
                 <input asp-for="Input.Email" class="form-control" />
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
+            <div class="align-content-around">
+            <span style="font-size:small;font-weight:bold">* your username is your registered email </span>
+                </div>
+            <br />
             <div class="form-group">
                 <label style="color:white" asp-for="Input.Password"></label>
                 <input asp-for="Input.Password" class="form-control" />
@@ -41,16 +45,16 @@
                 <button type="submit" class="btn btn-dark" id="mybutton">Log in</button>
             </div>
             @*<div class="form-group">
-                <p>
-                    <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-                </p>
-                <p>
-                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-                </p>
-                <p>
-                    <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-                </p>
-            </div>*@
+            <p>
+                <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+            </p>
+            <p>
+                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+            </p>
+            <p>
+                <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+            </p>
+        </div>*@
         </form>
     </section>
 </div>
