@@ -44,7 +44,7 @@ namespace CS_project.Controllers
                 var ext = Path.GetExtension(myFile.FileName);
                 if (ext.Equals(".txt"))
                 {
-                    var path = Path.Combine(wwwrootDirectory, DateTime.Now.ToString("dd - MM - yyyy") + "__" + myFile.FileName + "__" + userName + Path.GetExtension(myFile.FileName));
+                    var path = Path.Combine(wwwrootDirectory, DateTime.Now.ToString("dd - MM - yyyy") + "__" + myFile.FileName + "__" + userName + "__"+DateTime.Now.Ticks.ToString()+Path.GetExtension(myFile.FileName));
 
                     //saving the file
                     using (var stream = new FileStream(path, FileMode.Create))

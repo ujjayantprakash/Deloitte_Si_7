@@ -123,9 +123,11 @@
                 int pos3 = fPath.LastIndexOf('.');
                 int len = pos2 - pos1;
                 int len2 = pos3 - pos2;
+                int pos4 = fPath.LastIndexOf("__");
+                int len3 = pos4 - pos2;
                 var fname = fPath.Substring(pos1 + 1, len - 1);
                 var fcreation = fPath.Substring(0, pos1 - 1);
-                var fcreator = fPath.Substring(pos2 + 2, len2 - 2);
+                var fcreator = fPath.Substring(pos2+2,len3-2);
 
                 <!--<div class="col-md-3">-->
                 @*<div style="background-color:#4c5f55" class="alert alert-success" role="alert">*@
