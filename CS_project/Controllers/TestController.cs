@@ -9,6 +9,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using CS_project.Models;
 using System.Security.Claims;
+using CS_project.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using CS_project.Areas.Identity.Data;
 
 namespace CS_project.Controllers
 {
@@ -19,7 +22,7 @@ namespace CS_project.Controllers
         public string str;
         public IActionResult Index()
         {
-            List<string> content = Directory.GetFiles(wwwrootDirectory, "*.txt").Select(Path.GetFileName).ToList();
+            List<string> content = Directory.GetFiles(wwwrootDirectory, "*.pbix").Select(Path.GetFileName).ToList();
 
             return View(content);
         }
@@ -34,7 +37,18 @@ namespace CS_project.Controllers
         public async Task<IActionResult> Index(IFormFile myFile)
         {
             var userName = User.FindFirstValue(ClaimTypes.Name);
-            if (myFile != null)
+            //var context = new CS_project_authContext();
+            //var username = User.Identity.Name;
+
+            //if (!string.IsNullOrEmpty(username))
+            //{
+            //    var user = context.Users.SingleOrDefault(u => u.UserName == username);
+            //    string fullName = string.Concat(new string[] { user.firstName, " ", user.lastName });
+            //}
+                //var userName = User.FindFirst("firstName").Value;
+                /*var userName = User.FindFirstValue(ClaimTypes.NameIdentifier);*///gives userid
+                                                                                  // var userName = User.FindFirstValue(ClaimTypes.GivenName);
+                if (myFile != null)
             {
                 //preparing the path
                 //var user = User.Identity.GetUserId();
@@ -42,9 +56,9 @@ namespace CS_project.Controllers
                 //bool isAdmin = currentUser.IsInRole("Admin");
                 //var id = _userManager.GetUserId(User);
                 var ext = Path.GetExtension(myFile.FileName);
-                if (ext.Equals(".txt"))
+                if (ext.Equals(".pbix"))
                 {
-                    var path = Path.Combine(wwwrootDirectory, DateTime.Now.ToString("dd - MM - yyyy") + "__" + myFile.FileName + "__" + userName + "__"+DateTime.Now.Ticks.ToString()+Path.GetExtension(myFile.FileName));
+                    var path = Path.Combine(wwwrootDirectory, DateTime.Now.ToString("dd - MM - yyyy") + "____" + myFile.FileName + "____" + userName + "____"+DateTime.Now.Ticks.ToString()+Path.GetExtension(myFile.FileName));
 
                     //saving the file
                     using (var stream = new FileStream(path, FileMode.Create))

@@ -5,6 +5,7 @@
 }
 @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">*@
 
+
 <style>
 
     .content-table table {
@@ -117,17 +118,17 @@
             @foreach (var fPath in Model)
             {
                 var str = fPath + "\\n";
-                int pos1 = fPath.IndexOf("__");
-                pos1 = pos1 + 1;
-                int pos2 = fPath.IndexOf("__", 15);
+                int pos1 = fPath.IndexOf("____");
+                pos1 = pos1 + 3;
+                int pos2 = fPath.IndexOf("____", 15);
                 int pos3 = fPath.LastIndexOf('.');
                 int len = pos2 - pos1;
                 int len2 = pos3 - pos2;
-                int pos4 = fPath.LastIndexOf("__");
+                int pos4 = fPath.LastIndexOf("____");
                 int len3 = pos4 - pos2;
                 var fname = fPath.Substring(pos1 + 1, len - 1);
-                var fcreation = fPath.Substring(0, pos1 - 1);
-                var fcreator = fPath.Substring(pos2+2,len3-2);
+                var fcreation = fPath.Substring(0, pos1 - 3);
+                var fcreator = fPath.Substring(pos2+4,len3-4);
 
                 <!--<div class="col-md-3">-->
                 @*<div style="background-color:#4c5f55" class="alert alert-success" role="alert">*@
@@ -205,7 +206,7 @@
         let res = uploadedFileName.substring(result + 1);
         console.log(res);
         ext = res;
-        if (res == "txt") {
+        if (res == "pbix") {
             flag = true;
         }
         else {
@@ -222,7 +223,7 @@
         else {
             console.log("outside");
             pressedButton.addEventListener("click", function (event) {
-                alert("Error You uploaded " + ext + " file please upload txt files only");
+                alert("Error You uploaded " + ext + " file please upload pbix files only");
             })
         }
     })
