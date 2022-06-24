@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Dataset>
+@{
+    //Layout = null;
+}
+
+<style>
+    .content-table table {
+        /*table-layout: auto !important;*/
+        width: 100px;
+    }
+
+    .content-table thead,
+    .content-table tbody {
+        /* width: auto !important;*/
+    }
+
+    .content-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        min-width: 400px;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0,0,0,0.15);
+        /* background-color: #6fadae;*/
+        background-color: #86ab8d;
+    }
+
+        .content-table thead tr {
+            background-color: #393e3e;
+            color: white;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .content-table th,
+        .content-table td {
+            padding: 12px 18px;
+        }
+
+        .content-table tbody tr {
+            border-bottom: 1px solid azure;
+        }
+
+            .content-table tbody tr:last-of-type {
+                border-bottom: 1px solid #293f3a;
+            }
+
+            .content-table tbody tr:hover {
+                font-weight: bold;
+            }
+</style>
+
+<form asp-controller="Datasets" asp-action="Index" method="post" enctype="multipart/form-data">
+    <input style="color:white" type="file" name="file" />
+    <hr style="border-bottom:solid white" />
+    <button type="submit">Upload</button>
+</form>
+
+@if (Model.Count() > 0)
+{
+    <hr />
+    <table style="width:fit-content" class="table table-responsive table-hover table-borderless content-table">
+        @*<thead>
+            <tr style="color:white">
+                <td>
+                    Name
+                </td>
+                <td>
+                    Email
+                </td>
+                <td>
+                    Amount
+                </td>
+                <td>
+                    PhoneNo
+                </td>
+                <td>
+                    Location
+                </td>
+            </tr>
+        </thead>*@
+        <tbody>
+            @foreach (Dataset dataset in Model)
+            {
+                <tr style="color:white">
+                    <td>
+                        @dataset.Name
+                    </td>
+                    <td>
+                        @dataset.Email
+                    </td>
+                    <td>
+                        @dataset.Amount
+                    </td>
+                    <td>
+                        @dataset.PhoneNo
+                    </td>
+                    <td>
+                        @dataset.Location
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
