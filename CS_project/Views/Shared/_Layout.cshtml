@@ -3,29 +3,37 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - CS_project</title>
+    <title>@ViewData["Title"] - Deloitte7</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            /* background-image: url(https://igaming.org/wp-content/uploads/2021/08/deloitte-crypto-1024x576.jpg);*/
+            /*background-image: url("~/wwwroot/css/assets/deloitte-crypto-new-1024x576.jpg");*/
+            background: #000 center url(https://i.ibb.co/zFFgcym/deloitte-crypto-new-1024x576.jpg) no-repeat;
+            /*  filter: blur(8px);
+           -webkit-filter: blur(8px);*/
+        }
+    </style>
 </head>
 <body>
-    <header>
+    @*<img src="~/css/assets/deloitte-crypto-new-1024x576.jpg" />*@
+    <header style="background-color: #183a7a">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CS_project</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+                <a style="color:black;background-color:white" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a style="color: black;background-color: white" class="navbar-brand" asp-area="" asp-controller="Test" asp-action="Index">Upload</a>
+                <a style="color: black;background-color: white" class="navbar-brand" asp-area="" asp-controller="Datasets" asp-action="Index">Dataset</a>
+                @*<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">*@
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_Loginpartial.cshtml" />
                 </div>
+                <img style="width:10%;height:20%;display:block;margin-left:100px;margin-right:auto" src="~/css/assets/Deloitte_logo_black.png"
+                     class="collapse d-sm-inline-flex flex-sm-row-reverse">
             </div>
         </nav>
     </header>
@@ -35,9 +43,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - CS_project - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer style="background-color:#3a4a4b" class="border-top footer text-muted">
+        <div style="color:white"class="container">
+            &copy;Copyright &commat;Deloitte.com | 2021 <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

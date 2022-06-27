@@ -11,6 +11,10 @@ namespace CS_project.Data
 {
     public class CS_project_authContext : IdentityDbContext<CS_projectUserApplication>
     {
+        //public CS_project_authContext()
+        //{
+        //}
+
         public CS_project_authContext(DbContextOptions<CS_project_authContext> options)
             : base(options)
         {

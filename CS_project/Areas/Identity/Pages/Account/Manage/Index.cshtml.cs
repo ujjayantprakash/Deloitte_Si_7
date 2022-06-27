@@ -33,6 +33,11 @@ namespace CS_project.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
+            [Display(Name = "First Name")]
+            public string firstName { get; set; }
+            [Display(Name = "Last Name")]
+            public string lastName { get; set; }
+
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
@@ -42,12 +47,16 @@ namespace CS_project.Areas.Identity.Pages.Account.Manage
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var first = user.firstName;
+            var last = user.lastName;
 
             Username = userName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                firstName=first,
+                lastName=last
             };
         }
 
@@ -86,6 +95,18 @@ namespace CS_project.Areas.Identity.Pages.Account.Manage
                     StatusMessage = "Unexpected error when trying to set phone number.";
                     return RedirectToPage();
                 }
+            }
+            var first = user.firstName;
+            var last = user.lastName;
+            if (Input.firstName != first)
+            {
+                user.firstName = Input.firstName;
+                await _userManager.UpdateAsync(user);
+            }
+            if (Input.lastName != last)
+            {
+                user.lastName = Input.lastName;
+                await _userManager.UpdateAsync(user);
             }
 
             await _signInManager.RefreshSignInAsync(user);
